@@ -1,4 +1,4 @@
-import avatarSrc from "@/assets/avatar.png"
+import avatarSrc from "@/assets/avatar-hero.webp"
 import { Container } from "@/components/layout/Container"
 import { ArrowUpRight } from "lucide-react"
 import type { Language } from "@/types/language"
@@ -58,6 +58,10 @@ export function Hero({ language }: HeroProps) {
               <img
                 src={avatarSrc}
                 alt={content.imageAlt}
+                width={320}
+                height={320}
+                decoding="async"
+                fetchPriority="high"
                 className="size-full rounded-full object-cover"
               />
             </div>
@@ -67,7 +71,7 @@ export function Hero({ language }: HeroProps) {
                 id="hero-title"
                 className="font-heading text-[1.95rem] leading-none font-semibold tracking-[-0.045em] text-foreground min-[360px]:text-[2.12rem] sm:text-[2.35rem]"
               >
-                Cousema Anjary
+                Cousema <span className="ml-2">Anjary</span>
               </h1>
 
               <p className="mt-1.5 text-sm leading-none text-muted-foreground min-[360px]:text-[15px] sm:mt-2 sm:text-base">
