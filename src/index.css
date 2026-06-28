@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/newsreader";
+@import "@fontsource/nothing-you-could-do/latin-400.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Geist Variable", sans-serif;
+  --font-mono: "Geist Mono Variable", monospace;
+  --font-heading: "Newsreader Variable", serif;
+  --font-signature: "Nothing You Could Do", cursive;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-surface: var(--surface);
+  --color-accent-strong: var(--accent-strong);
+  --color-available: var(--available);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+:root {
+  --background: #f7f7f4;
+  --foreground: #171816;
+  --card: #ffffff;
+  --card-foreground: #171816;
+  --popover: #ffffff;
+  --popover-foreground: #171816;
+  --primary: #385a72;
+  --primary-foreground: #ffffff;
+  --secondary: #efefeb;
+  --secondary-foreground: #252722;
+  --muted: #efefeb;
+  --muted-foreground: #686b64;
+  --accent: #e5ebef;
+  --accent-foreground: #243d4e;
+  --destructive: #b42318;
+  --border: #dadcd5;
+  --input: #d2d5cd;
+  --ring: #6f899a;
+
+  --surface: #efefeb;
+  --accent-strong: #385a72;
+  --available: #3c7a57;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f0f1ec;
+  --card: #1d1f1c;
+  --card-foreground: #f0f1ec;
+  --popover: #1d1f1c;
+  --popover-foreground: #f0f1ec;
+  --primary: #89a9be;
+  --primary-foreground: #101311;
+  --secondary: #242622;
+  --secondary-foreground: #e7e9e3;
+  --muted: #242622;
+  --muted-foreground: #a8aca3;
+  --accent: #25323a;
+  --accent-foreground: #dbe6ed;
+  --destructive: #ffb4ab;
+  --border: #30332e;
+  --input: #3a3d37;
+  --ring: #89a9be;
+
+  --surface: #1d1f1c;
+  --accent-strong: #89a9be;
+  --available: #65a77d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-w-80 bg-background text-foreground antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0;
+  }
+
+  .dark body::before {
+    opacity: 0.1;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent-strong) 22%, transparent);
+  }
+}
+
+@layer utilities {
+  .text-justify-soft {
+    hyphens: auto;
+    text-align: left;
+    text-wrap: pretty;
+  }
+
+  @media (width >= 40rem) {
+    .text-justify-soft {
+      text-align: justify;
+      text-align-last: left;
+      text-justify: inter-word;
+      word-spacing: -0.035em;
+    }
+
+    .text-justify-full {
+      text-align-last: justify;
+      word-spacing: -0.05em;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}
