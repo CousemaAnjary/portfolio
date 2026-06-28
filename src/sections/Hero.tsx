@@ -45,8 +45,8 @@ export function Hero({ language }: HeroProps) {
   const content = heroContent[language]
   const links = [
     { label: "GitHub", href: "https://github.com/CousemaAnjary/", external: true },
-    { label: "LinkedIn", href: "https://www.linkedin.com/", external: true },
-    { label: content.contactLabel, href: "mailto:hello@example.com", external: false },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/cousemaanjary/", external: true },
+    { label: content.contactLabel, href: "mailto:anjary.pro@gmail.com", external: false },
   ]
 
   return (

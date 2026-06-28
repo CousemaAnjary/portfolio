@@ -4,9 +4,9 @@ import { Container } from "@/components/layout/Container"
 import type { Language } from "@/types/language"
 
 const footerLinks = [
-  { label: "Email", href: "mailto:hello@example.com", icon: FiMail, external: false },
+  { label: "Email", href: "mailto:anjary.pro@gmail.com", icon: FiMail, external: false },
   { label: "GitHub", href: "https://github.com/CousemaAnjary/", icon: FiGithub, external: true },
-  { label: "LinkedIn", href: "https://www.linkedin.com/", icon: FiLinkedin, external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/cousemaanjary/", icon: FiLinkedin, external: true },
 ]
 
 type FooterProps = {
