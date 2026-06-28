@@ -12,7 +12,9 @@ const heroContent = {
       "J’interviens sur l’ensemble du produit, de la conception de l’interface à la mise en place du backend. Je privilégie des solutions claires, accessibles et faciles à faire évoluer.",
     imageAlt: "Portrait de Cousema Anjary",
     navLabel: "Liens principaux",
-    contactLabel: "Me contacter",
+    contactPrefix: "Retrouvez-moi sur",
+    contactOr: "ou",
+    contactLabel: "contactez-moi",
   },
   en: {
     role: "Full-stack developer",
@@ -22,7 +24,9 @@ const heroContent = {
       "I work across the whole product, from interface design to backend implementation. I focus on clear, accessible solutions that are easy to evolve.",
     imageAlt: "Portrait of Cousema Anjary",
     navLabel: "Main links",
-    contactLabel: "Contact me",
+    contactPrefix: "Find me on",
+    contactOr: "or",
+    contactLabel: "contact me",
   },
 } satisfies Record<
   Language,
@@ -33,6 +37,8 @@ const heroContent = {
     description: string
     imageAlt: string
     navLabel: string
+    contactPrefix: string
+    contactOr: string
     contactLabel: string
   }
 >
@@ -43,11 +49,6 @@ type HeroProps = {
 
 export function Hero({ language }: HeroProps) {
   const content = heroContent[language]
-  const links = [
-    { label: "GitHub", href: "https://github.com/CousemaAnjary/", external: true },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/cousemaanjary/", external: true },
-    { label: content.contactLabel, href: "mailto:anjary.pro@gmail.com", external: false },
-  ]
 
   return (
     <section aria-labelledby="hero-title" lang={language}>
@@ -92,27 +93,44 @@ export function Hero({ language }: HeroProps) {
           </p>
 
           <nav
-            className="mt-7 flex flex-wrap gap-x-5 gap-y-3 sm:mt-8 sm:gap-x-6"
+            className="mt-7 text-sm leading-6 text-muted-foreground sm:mt-8"
             aria-label={content.navLabel}
           >
-            {links.map((link) => (
+            <p>
+              {content.contactPrefix}{" "}
               <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noreferrer" : undefined}
-                className="group inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                href="https://github.com/CousemaAnjary/"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-1 font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
               >
-                {link.label}
-
-                {link.external && (
-                  <ArrowUpRight
-                    className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                )}
+                GitHub
+                <ArrowUpRight
+                  className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
               </a>
-            ))}
+              ,{" "}
+              <a
+                href="https://www.linkedin.com/in/cousemaanjary/"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-1 font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+              >
+                LinkedIn
+                <ArrowUpRight
+                  className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </a>{" "}
+              {content.contactOr}{" "}
+              <a
+                href="mailto:anjary.pro@gmail.com"
+                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+              >
+                {content.contactLabel}
+              </a>
+            </p>
           </nav>
         </div>
       </Container>
