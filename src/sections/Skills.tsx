@@ -56,7 +56,7 @@ export function Skills({ language }: SkillsProps) {
             </h2>
 
             <div className="max-w-lg space-y-5 sm:pt-0.5">
-              <p className="text-justify-soft text-[15px] leading-7 text-muted-foreground">
+              <p className="text-justify-soft font-paragraph text-[15px] leading-7 text-muted-foreground">
                 {content.firstStart}{" "}
                 <span className="font-heading text-accent-strong italic">
                   {content.firstHighlight}
@@ -64,7 +64,7 @@ export function Skills({ language }: SkillsProps) {
                 {content.firstEnd}
               </p>
 
-              <p className="text-justify-soft text-[15px] leading-7 text-muted-foreground">
+              <p className="text-justify-soft font-paragraph text-[15px] leading-7 text-muted-foreground">
                 {content.secondStart}{" "}
                 <span className="font-heading text-accent-strong italic">
                   {content.secondHighlight}

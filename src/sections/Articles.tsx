@@ -50,7 +50,7 @@ export function Articles({ language }: ArticlesProps) {
               {content.title}
             </h2>
 
-            <p className="max-w-lg text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
+            <p className="max-w-lg font-paragraph text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
               {content.intro}{" "}
               <span className="font-heading text-accent-strong italic">
                 {content.highlight}
@@ -64,7 +64,7 @@ export function Articles({ language }: ArticlesProps) {
               {article.title}
             </h3>
 
-            <p className="text-justify-soft mt-4 max-w-none text-[15px] leading-7 text-muted-foreground">
+            <p className="text-justify-soft mt-4 max-w-none font-paragraph text-[15px] leading-7 text-muted-foreground">
               {article.excerpt}
             </p>
 

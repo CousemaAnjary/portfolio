@@ -52,7 +52,7 @@ export function Projects({ language }: ProjectsProps) {
               {content.title}
             </h2>
 
-            <p className="text-justify-soft max-w-lg text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
+            <p className="text-justify-soft max-w-lg font-paragraph text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
               {content.intro}{" "}
               <span className="font-heading text-accent-strong italic">
                 {content.highlight}
@@ -79,7 +79,7 @@ export function Projects({ language }: ProjectsProps) {
                     {project.title}
                   </h3>
 
-                  <p className="text-justify-soft mt-3.5 text-[15px] leading-7 text-muted-foreground sm:mt-4">
+                  <p className="text-justify-soft mt-3.5 font-paragraph text-[15px] leading-7 text-muted-foreground sm:mt-4">
                     {project.description[language]}
                   </p>
 

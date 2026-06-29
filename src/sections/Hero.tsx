@@ -6,8 +6,8 @@ import type { Language } from "@/types/language"
 const heroContent = {
   fr: {
     role: "Développeur full-stack",
-    headline: "Je transforme des idées en produits web",
-    highlight: "utiles, performants et bien construits",
+    headline: "Je crée des applications web et mobiles",
+    highlight: "claires, performantes et pensées pour durer",
     description:
       "J’interviens sur l’ensemble du produit, de la conception de l’interface à la mise en place du backend. Je privilégie des solutions claires, accessibles et faciles à faire évoluer.",
     imageAlt: "Portrait de Cousema Anjary",
@@ -18,8 +18,8 @@ const heroContent = {
   },
   en: {
     role: "Full-stack developer",
-    headline: "I turn ideas into web products",
-    highlight: "useful, performant and well-built",
+    headline: "I build web and mobile applications",
+    highlight: "clear, performant and designed to last",
     description:
       "I work across the whole product, from interface design to backend implementation. I focus on clear, accessible solutions that are easy to evolve.",
     imageAlt: "Portrait of Cousema Anjary",
@@ -88,7 +88,7 @@ export function Hero({ language }: HeroProps) {
             </span>
           </p>
 
-          <p className="text-justify-soft mt-5 text-[15px] leading-7 text-muted-foreground sm:mt-6 sm:text-base">
+          <p className="text-justify-soft mt-5 font-paragraph text-[15px] leading-7 text-muted-foreground sm:mt-6 sm:text-base">
             {content.description}
           </p>
 
