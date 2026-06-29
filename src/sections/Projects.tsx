@@ -52,9 +52,9 @@ export function Projects({ language }: ProjectsProps) {
               {content.title}
             </h2>
 
-            <p className="text-justify-soft max-w-lg font-paragraph text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
+            <p className="text-justify-soft max-w-lg text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
               {content.intro}{" "}
-              <span className="font-heading text-accent-strong italic">
+              <span className="font-heading text-accent-strong">
                 {content.highlight}
               </span>
               , {content.suffix}
@@ -68,7 +68,7 @@ export function Projects({ language }: ProjectsProps) {
                 className="group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-2.5 border-b border-border py-8 first:pt-0 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6 sm:py-10"
               >
                 <span
-                  className="self-center font-heading text-[1.85rem] font-semibold tracking-tighter text-accent-strong/45 italic sm:translate-x-4 sm:justify-self-start sm:text-[2.1rem]"
+                  className="self-center font-heading text-[1.85rem] font-semibold tracking-tighter text-accent-strong/45 sm:translate-x-4 sm:justify-self-start sm:text-[2.1rem]"
                   aria-hidden="true"
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -79,11 +79,11 @@ export function Projects({ language }: ProjectsProps) {
                     {project.title}
                   </h3>
 
-                  <p className="text-justify-soft mt-3.5 font-paragraph text-[15px] leading-7 text-muted-foreground sm:mt-4">
+                  <p className="text-justify-soft mt-3.5 text-[15px] leading-7 text-muted-foreground sm:mt-4">
                     {project.description[language]}
                   </p>
 
-                  <p className="mt-4 font-mono text-[11px] leading-5 text-foreground/70">
+                  <p className="mt-4 font-sans text-[11px] leading-5 text-foreground/70">
                     {project.technologies.join(" · ")}
                   </p>
 

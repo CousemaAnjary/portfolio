@@ -20,8 +20,8 @@ export function Footer({ language }: FooterProps) {
     <footer lang={language}>
       <Container className="pb-7 sm:pb-8">
         <div className="flex flex-col gap-5 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-64 font-mono text-[11px] leading-5 tracking-[-0.02em] text-foreground/60 sm:max-w-none">
-            © {year} Cousema Anjary.{" "}
+          <p className="max-w-64 font-sans text-[11px] leading-5 tracking-[-0.02em] text-foreground/60 sm:max-w-none">
+            © {year} ABDILLAH Cousema Anjary.{" "}
             {language === "fr" ? "Tous droits réservés" : "All rights reserved"}
           </p>
 

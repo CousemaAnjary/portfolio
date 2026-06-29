@@ -28,7 +28,7 @@ export function Header({
           <span className="font-signature text-[1.55rem] leading-none tracking-[-0.06em] transition-colors group-hover:text-accent-strong sm:text-[1.7rem]">
             Anjary
           </span>
-          <span className="ml-1 font-mono text-[8px] font-medium tracking-[-0.03em] text-muted-foreground transition-colors group-hover:text-foreground">
+          <span className="ml-1 font-sans text-[8px] font-medium tracking-[-0.03em] text-muted-foreground transition-colors group-hover:text-foreground">
             .dev
           </span>
         </a>

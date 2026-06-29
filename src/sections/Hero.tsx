@@ -83,12 +83,12 @@ export function Hero({ language }: HeroProps) {
 
           <p className="mt-9 text-[1.18rem] leading-8 tracking-tight min-[360px]:text-xl sm:mt-10 sm:text-[1.45rem]">
             {content.headline}{" "}
-            <span className="font-heading text-accent-strong italic">
+            <span className="font-heading text-accent-strong">
               {content.highlight}
             </span>
           </p>
 
-          <p className="text-justify-soft mt-5 font-paragraph text-[15px] leading-7 text-muted-foreground sm:mt-6 sm:text-base">
+          <p className="text-justify-soft mt-5 text-[15px] leading-7 text-muted-foreground sm:mt-6 sm:text-base">
             {content.description}
           </p>
 

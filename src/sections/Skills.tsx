@@ -56,17 +56,17 @@ export function Skills({ language }: SkillsProps) {
             </h2>
 
             <div className="max-w-lg space-y-5 sm:pt-0.5">
-              <p className="text-justify-soft font-paragraph text-[15px] leading-7 text-muted-foreground">
+              <p className="text-justify-soft text-[15px] leading-7 text-muted-foreground">
                 {content.firstStart}{" "}
-                <span className="font-heading text-accent-strong italic">
+                <span className="font-heading text-accent-strong">
                   {content.firstHighlight}
                 </span>{" "}
                 {content.firstEnd}
               </p>
 
-              <p className="text-justify-soft font-paragraph text-[15px] leading-7 text-muted-foreground">
+              <p className="text-justify-soft text-[15px] leading-7 text-muted-foreground">
                 {content.secondStart}{" "}
-                <span className="font-heading text-accent-strong italic">
+                <span className="font-heading text-accent-strong">
                   {content.secondHighlight}
                 </span>, {content.secondEnd}
               </p>
@@ -82,7 +82,7 @@ export function Skills({ language }: SkillsProps) {
                   key={group.area}
                   className="grid gap-1.5 sm:grid-cols-[5.75rem_minmax(0,1fr)] sm:gap-5"
                 >
-                  <dt className="font-mono text-[11px] leading-6 tracking-[-0.02em] text-accent-strong">
+                  <dt className="font-sans text-[11px] leading-6 tracking-[-0.02em] text-accent-strong">
                     {group.area}
                   </dt>
 
