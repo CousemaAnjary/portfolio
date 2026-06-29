@@ -60,7 +60,7 @@ export function Articles({ language }: ArticlesProps) {
           </div>
 
           <article className="group mt-8 pb-8 sm:mt-12 sm:pb-10">
-            <h3 className="mt-2 max-w-lg font-heading text-[1.55rem] leading-tight font-semibold tracking-[-0.035em] transition-colors duration-200 group-hover:text-accent-strong sm:text-2xl">
+            <h3 className="mt-2 font-heading text-[1.55rem] leading-tight font-semibold tracking-[-0.035em] transition-colors duration-200 group-hover:text-accent-strong sm:text-2xl">
               {article.title}
             </h3>
 
