@@ -171,6 +171,129 @@
 }
 
 @layer utilities {
+  @keyframes header-bot-breathe {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+
+    50% {
+      transform: translateY(-0.5px) scale(1.025);
+    }
+  }
+
+  @keyframes header-bot-respond {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+
+    35% {
+      transform: translateY(0.5px) scale(0.98);
+    }
+
+    70% {
+      transform: translateY(-0.75px) scale(1.02);
+    }
+  }
+
+  @keyframes header-bot-soft-nod {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    35% {
+      transform: translateY(0.75px);
+    }
+
+    70% {
+      transform: translateY(-0.5px);
+    }
+  }
+
+  @keyframes header-bot-expression-soften {
+    0%,
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+    42% {
+      filter: blur(0.2px);
+      opacity: 0.58;
+    }
+  }
+
+  @keyframes header-bot-blink {
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+
+    45%,
+    55% {
+      transform: scaleY(0.12);
+    }
+  }
+
+  @keyframes header-bot-double-blink {
+    0%,
+    22%,
+    42%,
+    64%,
+    100% {
+      transform: scaleY(1);
+    }
+
+    12%,
+    52% {
+      transform: scaleY(0.12);
+    }
+  }
+
+  @keyframes header-bot-wink {
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+
+    45%,
+    72% {
+      transform: scaleY(0.12);
+    }
+  }
+
+  @keyframes header-bot-eye-drift {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    35% {
+      transform: translateX(0.5px);
+    }
+
+    70% {
+      transform: translateX(-0.5px);
+    }
+  }
+
+  @keyframes header-bot-soft-pulse {
+    0%,
+    100%,
+    50% {
+      opacity: 0.86;
+      transform: translateX(-50%) scale(1);
+    }
+
+    25%,
+    75% {
+      opacity: 0.42;
+      transform: translateX(-50%) scale(0.82);
+    }
+  }
+
   .text-justify-soft {
     hyphens: auto;
     text-align: left;

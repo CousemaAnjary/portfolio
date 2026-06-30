@@ -1,6 +1,7 @@
 import { Moon, Sun } from "lucide-react"
 
 import { Container } from "@/components/layout/Container"
+import { HeaderBot } from "@/components/layout/HeaderBot"
 import { Button } from "@/components/ui/button"
 import type { Language } from "@/types/language"
 
@@ -37,7 +38,7 @@ export function Header({
           <button
             type="button"
             onClick={() => onLanguageChange(language === "fr" ? "en" : "fr")}
-            className="inline-flex h-7 items-center gap-1.5 rounded-full border border-white/35 bg-background/35 px-2.5 text-[10px] leading-none font-semibold tracking-[-0.02em] text-muted-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-md transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:h-8 sm:px-3 sm:text-[11px] dark:border-white/10 dark:bg-white/5 dark:shadow-none"
+            className="inline-flex h-7 items-center gap-1.5 rounded-sm px-1 text-[10px] leading-none font-semibold tracking-[-0.02em] text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:h-8 sm:px-1.5 sm:text-[11px]"
             aria-label={
               language === "fr" ? "Changer la langue en anglais" : "Switch language to French"
             }
@@ -66,6 +67,8 @@ export function Header({
           >
             {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
           </Button>
+
+          <HeaderBot />
         </div>
       </Container>
     </header>
