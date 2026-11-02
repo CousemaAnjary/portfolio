@@ -75,7 +75,7 @@ export function Hero({ language }: HeroProps) {
                 id="hero-title"
                 className="font-heading text-xl leading-tight font-semibold tracking-[-0.03em] sm:text-[1.35rem]"
               >
-                Cousema Anjary
+                ABDILLAH Cousema Anjary
               </h1>
               <p className="mt-0.5 text-sm text-muted-foreground">{content.role}</p>
             </div>
