@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
-import { Container } from "@/components/layout/Container"
 import { HeaderBot } from "@/components/layout/HeaderBot"
 import { cn, focusRing } from "@/lib/utils"
 import type { Language } from "@/types/language"
@@ -44,22 +43,31 @@ function useActiveSection(ids: string[]) {
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null)
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting)
+    // Section active : la dernière dont le haut a dépassé la ligne de lecture (sous le header)
+    let frame = 0
 
-        if (visible.length > 0) {
-          setActiveId(visible[visible.length - 1].target.id)
-        } else if (window.scrollY < 200) {
-          setActiveId(null)
-        }
-      },
-      { rootMargin: "-35% 0px -55% 0px" },
-    )
+    const update = () => {
+      frame = 0
+      const readingLine = window.innerHeight * 0.3
+      const current = sections.filter((section) => section.getBoundingClientRect().top <= readingLine).at(-1)
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
 
-    sections.forEach((section) => observer.observe(section))
+      setActiveId(isAtBottom ? (sections.at(-1)?.id ?? null) : (current?.id ?? null))
+    }
 
-    return () => observer.disconnect()
+    const scheduleUpdate = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener("scroll", scheduleUpdate, { passive: true })
+    window.addEventListener("resize", scheduleUpdate)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener("scroll", scheduleUpdate)
+      window.removeEventListener("resize", scheduleUpdate)
+    }
   }, [key])
 
   return activeId
@@ -83,15 +91,16 @@ export function Header({
   const activeId = useActiveSection(links.map(({ href }) => href.slice(1)))
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 border-b transition-[background-color,border-color] duration-300",
-        isScrolled
-          ? "border-border/70 bg-background/80 backdrop-blur-xl backdrop-saturate-150"
-          : "border-transparent bg-transparent",
-      )}
-    >
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-40 h-16">
+      {/* En haut de page : aucun effet. Au scroll : la barre se resserre en pilule flottante. */}
+      <div
+        className={cn(
+          "mx-auto flex items-center justify-between border transition-[max-width,height,translate,padding,border-radius,background-color,border-color,box-shadow] duration-500 ease-[cubic-bezier(.2,.8,.2,1)]",
+          isScrolled
+            ? "translate-y-4 h-14 max-w-[min(40rem,calc(100%_-_2rem))] rounded-[28px] border-border/80 bg-background/80 pr-1.5 pl-5 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05),0_16px_40px_-20px_rgb(0_0_0/0.22)] backdrop-blur-xl dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05),0_16px_40px_-20px_rgb(0_0_0/0.6)] backdrop-saturate-150"
+            : "translate-y-0 h-16 max-w-190 rounded-none border-transparent bg-transparent px-4 shadow-none sm:px-6",
+        )}
+      >
         <a
           href="/"
           className={cn("group inline-flex items-baseline text-foreground", focusRing)}
@@ -119,19 +128,12 @@ export function Header({
                   href={href}
                   aria-current={isActive ? "location" : undefined}
                   className={cn(
-                    "relative px-3 py-2 text-[13px] transition-colors duration-200",
+                    "px-3 py-1.5 text-[13px] transition-colors duration-300",
                     isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                     focusRing,
                   )}
                 >
                   {label}
-                  <span
-                    className={cn(
-                      "absolute inset-x-3 -bottom-px h-px origin-center bg-foreground transition-transform duration-300 ease-out",
-                      isActive ? "scale-x-100" : "scale-x-0",
-                    )}
-                    aria-hidden="true"
-                  />
                 </a>
               )
             })}
@@ -203,7 +205,7 @@ export function Header({
 
           <HeaderBot language={language} />
         </div>
-      </Container>
+      </div>
     </header>
   )
 }
