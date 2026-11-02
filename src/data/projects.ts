@@ -7,7 +7,7 @@ export type Project = {
   description: LocalizedText
   technologies: string[]
   year: string
-  category: string
+  category: LocalizedText
   // Laisser vide tant que le lien n'existe pas : le bouton est masqué
   liveUrl?: string
   sourceUrl?: string
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     },
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     year: "2026",
-    category: "Plateforme culturelle",
+    category: { fr: "Plateforme culturelle", en: "Cultural platform" },
   },
   {
     title: "Mora",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     },
     technologies: ["Next.js", "PostgreSQL", "Shadcn/ui"],
     year: "2025",
-    category: "Application web",
+    category: { fr: "Application web", en: "Web app" },
   },
   {
     title: "Tany",
@@ -42,6 +42,6 @@ export const projects: Project[] = [
     },
     technologies: ["React", "Vite", "Supabase"],
     year: "2025",
-    category: "Site vitrine",
+    category: { fr: "Site vitrine", en: "Showcase website" },
   },
 ]

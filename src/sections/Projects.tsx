@@ -1,23 +1,21 @@
 import { ArrowUpRight } from "lucide-react"
 
+import { SectionHeader } from "@/components/common/SectionHeader"
 import { Container } from "@/components/layout/Container"
 import { projects } from "@/data/projects"
+import { cn, focusRing } from "@/lib/utils"
 import type { Language } from "@/types/language"
 
 const projectsContent = {
   fr: {
     title: "Projets",
-    intro: "Une sélection de produits web,",
-    highlight: "du concept à la mise en ligne",
-    suffix: "avec une attention portée à la clarté, au rythme et aux détails d’usage.",
+    intro: "Une sélection de produits web, du concept à la mise en ligne, avec une attention portée à la clarté, au rythme et aux détails d’usage.",
     liveLabel: "Voir le projet",
     sourceLabel: "Code source",
   },
   en: {
     title: "Projects",
-    intro: "A selection of web products,",
-    highlight: "from concept to launch",
-    suffix: "with attention to clarity, rhythm and details.",
+    intro: "A selection of web products, from concept to launch, with attention to clarity, rhythm and the details of use.",
     liveLabel: "View project",
     sourceLabel: "Source code",
   },
@@ -26,8 +24,6 @@ const projectsContent = {
   {
     title: string
     intro: string
-    highlight: string
-    suffix: string
     liveLabel: string
     sourceLabel: string
   }
@@ -41,85 +37,83 @@ export function Projects({ language }: ProjectsProps) {
   const content = projectsContent[language]
 
   return (
-    <section id="projects" aria-labelledby="projects-title" lang={language}>
-      <Container className="pb-14 sm:pb-20">
+    <section id="projects" aria-labelledby="projects-title" lang={language} className="scroll-mt-20">
+      <Container className="pb-20 sm:pb-28">
         <div className="max-w-2xl">
-          <div className="grid gap-2.5 sm:grid-cols-[8rem_1fr] sm:gap-6">
-            <h2
-              id="projects-title"
-              className="font-heading text-2xl font-semibold tracking-[-0.035em] sm:text-[1.75rem]"
-            >
-              {content.title}
-            </h2>
+          <SectionHeader id="projects-title" index="01" title={content.title}>
+            {content.intro}
+          </SectionHeader>
 
-            <p className="text-justify-soft max-w-lg text-[15px] leading-7 text-muted-foreground sm:pt-0.5">
-              {content.intro}{" "}
-              <span className="font-heading text-accent-strong">
-                {content.highlight}
-              </span>
-              , {content.suffix}
-            </p>
-          </div>
+          <ul className="mt-10 border-t border-border sm:mt-14">
+            {projects.map((project) => (
+              <li key={project.title}>
+                <article className="group grid gap-3 border-b border-border py-8 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6 sm:py-10">
+                  <div className="flex gap-3 font-mono text-[11px] tracking-tight text-muted-foreground sm:flex-col sm:gap-1 sm:pt-2">
+                    <span>{project.year}</span>
+                    <span className="text-muted-foreground/60 sm:hidden">·</span>
+                    <span>{project.category[language]}</span>
+                  </div>
 
-          <div className="mt-8 sm:mt-12">
-            {projects.map((project, index) => (
-              <article
-                key={project.title}
-                className="group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-2.5 border-b border-border py-8 first:pt-0 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6 sm:py-10"
-              >
-                <span
-                  className="self-start font-heading text-[1.85rem] leading-[1.1] font-semibold tracking-tighter text-accent-strong/45 sm:translate-x-4 sm:justify-self-start sm:text-[2.1rem]"
-                  aria-hidden="true"
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                  <div>
+                    <h3 className="font-heading text-[1.6rem] leading-tight font-semibold tracking-[-0.035em] transition-colors duration-200 group-hover:text-accent-strong">
+                      {project.title}
+                    </h3>
 
-                <div>
-                  <h3 className="font-heading text-[1.55rem] leading-tight font-semibold tracking-[-0.035em] transition-colors duration-200 group-hover:text-accent-strong sm:text-2xl">
-                    {project.title}
-                  </h3>
+                    <p className="mt-3 text-[15px] leading-7 text-pretty text-muted-foreground">
+                      {project.description[language]}
+                    </p>
 
-                  <p className="text-justify-soft mt-3.5 text-[15px] leading-7 text-muted-foreground sm:mt-4">
-                    {project.description[language]}
-                  </p>
-
-                  <p className="mt-4 font-sans text-[11px] leading-5 text-foreground/70">
-                    {project.technologies.join(" · ")}
-                  </p>
-
-                  {(project.liveUrl || project.sourceUrl) && (
-                    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="group/link inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                    <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">
+                      {project.technologies.map((technology) => (
+                        <li
+                          key={technology}
+                          className="rounded-full border border-border px-2.5 py-0.5 text-[11px] leading-5 text-foreground/75"
                         >
-                          {content.liveLabel}
-                          <ArrowUpRight
-                            className="size-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                            aria-hidden="true"
-                          />
-                        </a>
-                      )}
+                          {technology}
+                        </li>
+                      ))}
+                    </ul>
 
-                      {project.sourceUrl && (
-                        <a
-                          href={project.sourceUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-foreground hover:decoration-foreground focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-                        >
-                          {content.sourceLabel}
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </article>
+                    {(project.liveUrl || project.sourceUrl) && (
+                      <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={cn(
+                              "group/link inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong",
+                              focusRing,
+                            )}
+                          >
+                            {content.liveLabel}
+                            <ArrowUpRight
+                              className="size-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                              aria-hidden="true"
+                            />
+                          </a>
+                        )}
+
+                        {project.sourceUrl && (
+                          <a
+                            href={project.sourceUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={cn(
+                              "text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-foreground hover:decoration-foreground",
+                              focusRing,
+                            )}
+                          >
+                            {content.sourceLabel}
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </Container>
     </section>

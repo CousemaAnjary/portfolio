@@ -1,40 +1,20 @@
+import { SectionHeader } from "@/components/common/SectionHeader"
 import { Container } from "@/components/layout/Container"
 import { skillGroups } from "@/data/skills"
 import type { Language } from "@/types/language"
 
 const skillsContent = {
   fr: {
-    title: "Stack technique",
-    firstStart: "Une stack courte et maîtrisée, pensée pour construire des interfaces",
-    firstHighlight: "sobres, rapides et fiables",
-    firstEnd: "sans complexité inutile.",
-    secondStart: "Je travaille avec",
-    secondHighlight: "React, TypeScript et Tailwind CSS",
-    secondEnd:
-      "puis Node.js, PostgreSQL et Supabase quand le produit demande une base plus complète.",
+    title: "Stack",
+    intro:
+      "Une stack courte et maîtrisée, pour construire des interfaces sobres, rapides et fiables sans complexité inutile.",
   },
   en: {
-    title: "Tech stack",
-    firstStart: "A short, focused stack designed to build interfaces that are",
-    firstHighlight: "clean, fast and reliable",
-    firstEnd: "without unnecessary complexity.",
-    secondStart: "I work with",
-    secondHighlight: "React, TypeScript and Tailwind CSS",
-    secondEnd:
-      "then Node.js, PostgreSQL and Supabase when the product needs a more complete foundation.",
+    title: "Stack",
+    intro:
+      "A short, focused stack to build clean, fast and reliable interfaces without unnecessary complexity.",
   },
-} satisfies Record<
-  Language,
-  {
-    title: string
-    firstStart: string
-    firstHighlight: string
-    firstEnd: string
-    secondStart: string
-    secondHighlight: string
-    secondEnd: string
-  }
->
+} satisfies Record<Language, { title: string; intro: string }>
 
 type SkillsProps = {
   language: Language
@@ -44,62 +24,36 @@ export function Skills({ language }: SkillsProps) {
   const content = skillsContent[language]
 
   return (
-    <section id="stack" aria-labelledby="stack-title" lang={language}>
-      <Container className="pb-14 sm:pb-20">
+    <section id="stack" aria-labelledby="stack-title" lang={language} className="scroll-mt-20">
+      <Container className="pb-20 sm:pb-28">
         <div className="max-w-2xl">
-          <div className="grid gap-3 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6">
-            <h2
-              id="stack-title"
-              className="font-heading text-2xl leading-none font-semibold tracking-[-0.035em] sm:text-[1.75rem]"
-            >
-              {content.title}
-            </h2>
+          <SectionHeader id="stack-title" index="02" title={content.title}>
+            {content.intro}
+          </SectionHeader>
 
-            <div className="max-w-lg space-y-5 sm:pt-0.5">
-              <p className="text-justify-soft text-[15px] leading-7 text-muted-foreground">
-                {content.firstStart}{" "}
-                <span className="font-heading text-accent-strong">
-                  {content.firstHighlight}
-                </span>{" "}
-                {content.firstEnd}
-              </p>
+          <dl className="mt-10 border-t border-border sm:mt-14">
+            {skillGroups[language].map((group) => (
+              <div
+                key={group.area}
+                className="grid gap-2 border-b border-border py-5 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6"
+              >
+                <dt className="font-mono text-[11px] leading-7 tracking-tight text-muted-foreground">
+                  {group.area}
+                </dt>
 
-              <p className="text-justify-soft text-[15px] leading-7 text-muted-foreground">
-                {content.secondStart}{" "}
-                <span className="font-heading text-accent-strong">
-                  {content.secondHighlight}
-                </span>, {content.secondEnd}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-5 sm:mt-11 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6">
-            <div className="hidden sm:block" aria-hidden="true" />
-
-            <dl className="max-w-lg space-y-4">
-              {skillGroups[language].map((group) => (
-                <div
-                  key={group.area}
-                  className="grid gap-1.5 sm:grid-cols-[5.75rem_minmax(0,1fr)] sm:gap-5"
-                >
-                  <dt className="font-sans text-[11px] leading-6 tracking-[-0.02em] text-accent-strong">
-                    {group.area}
-                  </dt>
-
-                  <dd className="text-sm leading-6 text-foreground/80">
-                    {group.items.map((item, index) => (
-                      <span key={item}>
-                        <span>{item}</span>
-                        {index < group.items.length - 1 && (
-                          <span className="text-muted-foreground/55"> · </span>
-                        )}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+                <dd className="flex flex-wrap gap-1.5">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-border px-2.5 py-0.5 text-[13px] leading-6 text-foreground/85"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </Container>
     </section>

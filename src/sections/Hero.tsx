@@ -1,32 +1,33 @@
+import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { FiGithub, FiLinkedin } from "react-icons/fi"
+
 import avatarSrc from "@/assets/avatar-hero.webp"
 import { Container } from "@/components/layout/Container"
-import { ArrowUpRight } from "lucide-react"
+import { cn, focusRing } from "@/lib/utils"
 import type { Language } from "@/types/language"
 
 const heroContent = {
   fr: {
     role: "Développeur full-stack",
-    headline: "Je crée des applications web et mobiles",
-    highlight: "claires, performantes et pensées pour durer",
+    headline: "Je conçois des applications web et mobiles",
+    highlight: "claires, rapides et pensées pour durer.",
     description:
-      "J’interviens sur l’ensemble du produit, de la conception de l’interface à la mise en place du backend. Je privilégie des solutions claires, accessibles et faciles à faire évoluer.",
+      "J’interviens sur tout le produit, de l’interface au backend. Peu de complexité, beaucoup de soin : des solutions accessibles, simples à faire évoluer.",
     imageAlt: "Portrait de Cousema Anjary",
-    navLabel: "Liens principaux",
-    contactPrefix: "Retrouvez-moi sur",
-    contactOr: "ou",
-    contactLabel: "contactez-moi",
+    primaryCta: "Me contacter",
+    secondaryCta: "Voir les projets",
+    location: "Antananarivo, Madagascar",
   },
   en: {
     role: "Full-stack developer",
-    headline: "I build web and mobile applications",
-    highlight: "clear, performant and designed to last",
+    headline: "I design and build web and mobile apps that are",
+    highlight: "clear, fast and built to last.",
     description:
-      "I work across the whole product, from interface design to backend implementation. I focus on clear, accessible solutions that are easy to evolve.",
+      "I work across the whole product, from interface to backend. Little complexity, a lot of care: accessible solutions that are easy to evolve.",
     imageAlt: "Portrait of Cousema Anjary",
-    navLabel: "Main links",
-    contactPrefix: "Find me on",
-    contactOr: "or",
-    contactLabel: "contact me",
+    primaryCta: "Get in touch",
+    secondaryCta: "See projects",
+    location: "Antananarivo, Madagascar",
   },
 } satisfies Record<
   Language,
@@ -36,12 +37,16 @@ const heroContent = {
     highlight: string
     description: string
     imageAlt: string
-    navLabel: string
-    contactPrefix: string
-    contactOr: string
-    contactLabel: string
+    primaryCta: string
+    secondaryCta: string
+    location: string
   }
 >
+
+const socialLinks = [
+  { label: "GitHub", href: "https://github.com/CousemaAnjary/", icon: FiGithub },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/cousemaanjary/", icon: FiLinkedin },
+]
 
 type HeroProps = {
   language: Language
@@ -52,86 +57,90 @@ export function Hero({ language }: HeroProps) {
 
   return (
     <section aria-labelledby="hero-title" lang={language}>
-      <Container className="pt-8 pb-14 sm:pt-12 sm:pb-20">
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-4 sm:gap-5">
-            <div className="relative size-14 shrink-0 overflow-hidden rounded-full shadow-sm min-[360px]:size-16 sm:size-20">
-              <img
-                src={avatarSrc}
-                alt={content.imageAlt}
-                width={320}
-                height={320}
-                decoding="async"
-                fetchPriority="high"
-                className="size-full rounded-full object-cover"
-              />
-            </div>
+      <Container className="pt-10 pb-20 sm:pt-16 sm:pb-28">
+        <div className="max-w-2xl animate-in fade-in slide-in-from-bottom-2 duration-700">
+          <div className="flex items-center gap-4">
+            <img
+              src={avatarSrc}
+              alt={content.imageAlt}
+              width={320}
+              height={320}
+              decoding="async"
+              fetchPriority="high"
+              className="size-14 shrink-0 rounded-full object-cover ring-1 ring-border sm:size-16"
+            />
 
             <div>
               <h1
                 id="hero-title"
-                className="font-heading text-[1.95rem] leading-none font-semibold tracking-[-0.045em] text-foreground min-[360px]:text-[2.12rem] sm:text-[2.35rem]"
+                className="font-heading text-xl leading-tight font-semibold tracking-[-0.03em] sm:text-[1.35rem]"
               >
                 Cousema Anjary
               </h1>
-
-              <p className="mt-1.5 text-sm leading-none text-muted-foreground min-[360px]:text-[15px] sm:mt-2 sm:text-base">
-                {content.role}
-              </p>
+              <p className="mt-0.5 text-sm text-muted-foreground">{content.role}</p>
             </div>
           </div>
 
-          <p className="mt-9 text-[1.18rem] leading-8 tracking-tight min-[360px]:text-xl sm:mt-10 sm:text-[1.45rem]">
+          <p className="mt-10 font-heading text-[2rem] leading-[1.1] font-medium tracking-[-0.04em] text-balance sm:text-[2.75rem]">
             {content.headline}{" "}
-            <span className="font-heading text-accent-strong">
-              {content.highlight}
-            </span>
+            <span className="text-accent-strong">{content.highlight}</span>
           </p>
 
-          <p className="text-justify-soft mt-5 text-[15px] leading-7 text-muted-foreground sm:mt-6 sm:text-base">
+          <p className="mt-6 max-w-xl text-[15px] leading-7 text-pretty text-muted-foreground sm:text-base">
             {content.description}
           </p>
 
-          <nav
-            className="mt-7 text-sm leading-6 text-muted-foreground sm:mt-8"
-            aria-label={content.navLabel}
-          >
-            <p>
-              {content.contactPrefix}{" "}
-              <a
-                href="https://github.com/CousemaAnjary/"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-1 font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-              >
-                GitHub
-                <ArrowUpRight
-                  className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </a>
-              ,{" "}
-              <a
-                href="https://www.linkedin.com/in/cousemaanjary/"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-1 font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-              >
-                LinkedIn
-                <ArrowUpRight
-                  className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </a>{" "}
-              {content.contactOr}{" "}
-              <a
-                href="mailto:anjary.pro@gmail.com"
-                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-              >
-                {content.contactLabel}
-              </a>
-            </p>
-          </nav>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href="mailto:anjary.pro@gmail.com"
+              className={cn(
+                "group inline-flex h-10 items-center gap-1.5 rounded-full bg-foreground px-5 text-sm font-medium text-background transition-opacity duration-200 hover:opacity-85",
+                focusRing,
+              )}
+            >
+              {content.primaryCta}
+              <ArrowUpRight
+                className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
+
+            <a
+              href="#projects"
+              className={cn(
+                "group inline-flex h-10 items-center gap-1.5 rounded-full border border-border px-5 text-sm font-medium transition-colors duration-200 hover:border-foreground/40",
+                focusRing,
+              )}
+            >
+              {content.secondaryCta}
+              <ArrowDown
+                className="size-4 transition-transform duration-200 group-hover:translate-y-0.5"
+                aria-hidden="true"
+              />
+            </a>
+
+            <div className="ml-1 flex items-center gap-1">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className={cn(
+                    "inline-flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors duration-200 hover:text-foreground",
+                    focusRing,
+                  )}
+                >
+                  <Icon className="size-[18px]" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-10 font-mono text-[11px] tracking-tight text-muted-foreground/80">
+            {content.location} · UTC+3
+          </p>
         </div>
       </Container>
     </section>

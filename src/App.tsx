@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 
 import { Footer } from "@/components/layout/Footer"
 import { Header } from "@/components/layout/Header"
-import { Articles } from "@/sections/Articles"
 import { Hero } from "@/sections/Hero"
 import { Projects } from "@/sections/Projects"
 import { Skills } from "@/sections/Skills"
@@ -41,7 +40,9 @@ export default function App() {
         <Hero language={language} />
         <Projects language={language} />
         <Skills language={language} />
-        <Articles language={language} />
+        {/* Approche masquée pour l'instant */}
+        {/* Articles masqués tant qu'il n'y a pas au moins deux articles publiés */}
+        {/* Contact masqué pour l'instant */}
       </main>
       <Footer language={language} />
     </div>
