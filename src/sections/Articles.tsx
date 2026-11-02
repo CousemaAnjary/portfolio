@@ -1,5 +1,3 @@
-import { ArrowUpRight } from "lucide-react"
-
 import { Container } from "@/components/layout/Container"
 import { featuredArticle } from "@/data/articles"
 import type { Language } from "@/types/language"
@@ -9,15 +7,13 @@ const articlesContent = {
     title: "Articles",
     intro: "Des notes courtes sur le développement web,",
     highlight: "le design d’interface et les choix techniques",
-    readLabel: "Lire bientôt",
-    readAriaLabel: "Lire l’article bientôt disponible",
+    readLabel: "Bientôt",
   },
   en: {
     title: "Articles",
     intro: "Short notes about web development,",
     highlight: "interface design and technical decisions",
-    readLabel: "Read soon",
-    readAriaLabel: "Read the article soon",
+    readLabel: "Coming soon",
   },
 } satisfies Record<
   Language,
@@ -26,7 +22,6 @@ const articlesContent = {
     intro: string
     highlight: string
     readLabel: string
-    readAriaLabel: string
   }
 >
 
@@ -78,17 +73,9 @@ export function Articles({ language }: ArticlesProps) {
                   {article.readTime}
                 </span>
 
-                <a
-                  href="#articles"
-                  className="group/link inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors duration-200 hover:text-accent-strong hover:decoration-accent-strong focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-                  aria-label={content.readAriaLabel}
-                >
+                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">
                   {content.readLabel}
-                  <ArrowUpRight
-                    className="size-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                </a>
+                </span>
               </div>
             </div>
           </article>

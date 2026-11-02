@@ -8,8 +8,9 @@ export type Project = {
   technologies: string[]
   year: string
   category: string
-  liveUrl: string
-  sourceUrl: string
+  // Laisser vide tant que le lien n'existe pas : le bouton est masqué
+  liveUrl?: string
+  sourceUrl?: string
 }
 
 export const projects: Project[] = [
@@ -22,8 +23,6 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     year: "2026",
     category: "Plateforme culturelle",
-    liveUrl: "#",
-    sourceUrl: "#",
   },
   {
     title: "Mora",
@@ -34,8 +33,6 @@ export const projects: Project[] = [
     technologies: ["Next.js", "PostgreSQL", "Shadcn/ui"],
     year: "2025",
     category: "Application web",
-    liveUrl: "#",
-    sourceUrl: "#",
   },
   {
     title: "Tany",
@@ -46,7 +43,5 @@ export const projects: Project[] = [
     technologies: ["React", "Vite", "Supabase"],
     year: "2025",
     category: "Site vitrine",
-    liveUrl: "#",
-    sourceUrl: "#",
   },
 ]
