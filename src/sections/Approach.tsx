@@ -70,7 +70,7 @@ export function Approach({ language }: ApproachProps) {
     <section id="approach" aria-labelledby="approach-title" lang={language} className="scroll-mt-20">
       <Container className="pb-20 sm:pb-28">
         <div className="max-w-2xl">
-          <SectionHeader id="approach-title" index="03" title={content.title}>
+          <SectionHeader id="approach-title" title={content.title}>
             {content.intro}
           </SectionHeader>
 
@@ -96,7 +96,7 @@ export function Approach({ language }: ApproachProps) {
                     {principle.description}
                   </p>
 
-                  <p className="mt-5 font-mono text-[11px] tracking-tight text-muted-foreground/80">
+                  <p className="mt-5 font-mono text-xs leading-5 tracking-tight text-muted-foreground/80">
                     {principle.focus.join("  /  ")}
                   </p>
                 </div>

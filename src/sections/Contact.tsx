@@ -102,7 +102,7 @@ export function Contact({ language }: ContactProps) {
     <section id="contact" aria-labelledby="contact-title" lang={language} className="scroll-mt-20">
       <Container className="pb-20 sm:pb-28">
         <div className="max-w-2xl">
-          <SectionHeader id="contact-title" index="04" title={content.title}>
+          <SectionHeader id="contact-title" title={content.title}>
             {content.intro}
           </SectionHeader>
 
@@ -154,7 +154,7 @@ export function Contact({ language }: ContactProps) {
 
           <dl className="mt-12 grid grid-cols-3 border-t border-border pt-5 sm:mt-16">
             <div>
-              <dt className="font-mono text-[11px] tracking-tight text-muted-foreground">
+              <dt className="font-mono text-xs tracking-tight text-muted-foreground">
                 {content.statusLabel}
               </dt>
               <dd className="mt-1.5 inline-flex items-center gap-2 text-sm">
@@ -167,7 +167,7 @@ export function Contact({ language }: ContactProps) {
             </div>
 
             <div>
-              <dt className="font-mono text-[11px] tracking-tight text-muted-foreground">
+              <dt className="font-mono text-xs tracking-tight text-muted-foreground">
                 {content.timeLabel}
               </dt>
               <dd className="mt-1.5 text-sm tabular-nums">
@@ -177,7 +177,7 @@ export function Contact({ language }: ContactProps) {
             </div>
 
             <div>
-              <dt className="font-mono text-[11px] tracking-tight text-muted-foreground">
+              <dt className="font-mono text-xs tracking-tight text-muted-foreground">
                 {content.responseLabel}
               </dt>
               <dd className="mt-1.5 text-sm">{content.response}</dd>

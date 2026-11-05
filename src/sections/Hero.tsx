@@ -81,7 +81,7 @@ export function Hero({ language }: HeroProps) {
             </div>
           </div>
 
-          <p className="mt-10 font-heading text-[2rem] leading-[1.1] font-medium tracking-[-0.04em] text-balance sm:text-[2.75rem]">
+          <p className="mt-10 font-heading text-[2rem] leading-[1.15] font-medium tracking-[-0.035em] text-balance sm:text-[2.75rem]">
             {content.headline}{" "}
             <span className="text-accent-strong">{content.highlight}</span>
           </p>
@@ -138,7 +138,7 @@ export function Hero({ language }: HeroProps) {
             </div>
           </div>
 
-          <p className="mt-10 font-mono text-[11px] tracking-tight text-muted-foreground/80">
+          <p className="mt-10 font-mono text-xs leading-5 tracking-tight text-muted-foreground/80">
             {content.location} · UTC+3
           </p>
         </div>

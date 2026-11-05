@@ -64,12 +64,12 @@ export function Articles({ language }: ArticlesProps) {
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-between gap-x-5 gap-y-3">
-              <span className="font-sans text-[11px] leading-5 text-foreground/70">
+              <span className="font-sans text-xs leading-5 text-foreground/70">
                 {article.date}
               </span>
 
               <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-3">
-                <span className="font-sans text-[11px] leading-5 text-foreground/70">
+                <span className="font-sans text-xs leading-5 text-foreground/70">
                   {article.readTime}
                 </span>
 

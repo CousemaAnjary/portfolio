@@ -655,7 +655,7 @@ export function HeaderBot({ language }: HeaderBotProps) {
               fontSize="8"
               fontWeight="700"
               className="fill-accent-strong"
-              style={{ animation: prefersReducedMotion ? undefined : "header-bot-pop 420ms cubic-bezier(.3,1.5,.5,1) both" }}
+              style={{ animation: prefersReducedMotion ? undefined : "header-bot-pop 420ms cubic-bezier(.22,1,.36,1) both" }}
             >
               {expression.symbol}
             </text>

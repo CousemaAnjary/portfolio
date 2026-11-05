@@ -3,20 +3,20 @@
 @import "shadcn/tailwind.css";
 
 @font-face {
-  font-family: "Inter Variable";
+  font-family: "Onest Variable";
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url("../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2")
+  src: url("../node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2")
     format("woff2-variations");
 }
 
 @font-face {
-  font-family: "Space Grotesk Variable";
+  font-family: "Bricolage Grotesque Variable";
   font-style: normal;
   font-display: swap;
-  font-weight: 300 700;
-  src: url("../node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2")
+  font-weight: 200 800;
+  src: url("../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2")
     format("woff2-variations");
 }
 
@@ -32,8 +32,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Inter Variable", sans-serif;
-  --font-heading: "Space Grotesk Variable", sans-serif;
+  --font-sans: "Onest Variable", sans-serif;
+  --font-heading: "Bricolage Grotesque Variable", sans-serif;
   --font-signature: "Nothing You Could Do", cursive;
 
   --color-background: var(--background);

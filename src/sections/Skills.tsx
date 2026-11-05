@@ -27,7 +27,7 @@ export function Skills({ language }: SkillsProps) {
     <section id="stack" aria-labelledby="stack-title" lang={language} className="scroll-mt-20">
       <Container className="pb-20 sm:pb-28">
         <div className="max-w-2xl">
-          <SectionHeader id="stack-title" index="02" title={content.title}>
+          <SectionHeader id="stack-title" title={content.title}>
             {content.intro}
           </SectionHeader>
 
@@ -37,7 +37,7 @@ export function Skills({ language }: SkillsProps) {
                 key={group.area}
                 className="grid gap-2 border-b border-border py-5 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6"
               >
-                <dt className="font-mono text-[11px] leading-7 tracking-tight text-muted-foreground">
+                <dt className="font-mono text-xs leading-7 tracking-tight text-muted-foreground">
                   {group.area}
                 </dt>
 

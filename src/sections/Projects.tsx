@@ -40,7 +40,7 @@ export function Projects({ language }: ProjectsProps) {
     <section id="projects" aria-labelledby="projects-title" lang={language} className="scroll-mt-20">
       <Container className="pb-20 sm:pb-28">
         <div className="max-w-2xl">
-          <SectionHeader id="projects-title" index="01" title={content.title}>
+          <SectionHeader id="projects-title" title={content.title}>
             {content.intro}
           </SectionHeader>
 
@@ -48,7 +48,7 @@ export function Projects({ language }: ProjectsProps) {
             {projects.map((project) => (
               <li key={project.title}>
                 <article className="group grid gap-3 border-b border-border py-8 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-6 sm:py-10">
-                  <div className="flex gap-3 font-mono text-[11px] tracking-tight text-muted-foreground sm:flex-col sm:gap-1 sm:pt-2">
+                  <div className="flex gap-3 font-mono text-xs leading-5 tracking-tight text-muted-foreground sm:flex-col sm:gap-1 sm:pt-2">
                     <span>{project.year}</span>
                     <span className="text-muted-foreground/60 sm:hidden">·</span>
                     <span>{project.category[language]}</span>
@@ -67,7 +67,7 @@ export function Projects({ language }: ProjectsProps) {
                       {project.technologies.map((technology) => (
                         <li
                           key={technology}
-                          className="rounded-full border border-border px-2.5 py-0.5 text-[11px] leading-5 text-foreground/75"
+                          className="rounded-full border border-border px-2.5 py-0.5 text-xs leading-5 text-foreground/75"
                         >
                           {technology}
                         </li>

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T00:00:00+03:00",
+  "title": "Design System: Anjary.dev",
+  "extensions": {
+    "colorMeta": {
+      "light-background": { "role": "neutral", "displayName": "Papier minéral", "canonical": "#f7f7f4", "tonalRamp": ["#252523", "#454543", "#666663", "#898986", "#adadaa", "#d1d1ce", "#ecece9", "#f7f7f4"] },
+      "light-foreground": { "role": "neutral", "displayName": "Encre profonde", "canonical": "#171816", "tonalRamp": ["#171816", "#353633", "#555651", "#777872", "#9b9c95", "#bfc0ba", "#dedfda", "#f1f2ed"] },
+      "light-accent": { "role": "primary", "displayName": "Bleu ardoise précis", "canonical": "#385a72", "tonalRamp": ["#13232f", "#213b4e", "#30536d", "#476d89", "#6688a1", "#89a6b9", "#b7c8d3", "#e4ebef"] },
+      "dark-background": { "role": "neutral", "displayName": "Noir atelier", "canonical": "#0a0a0a", "tonalRamp": ["#0a0a0a", "#292929", "#484848", "#686868", "#898989", "#ababab", "#cecece", "#f1f1f1"] },
+      "dark-foreground": { "role": "neutral", "displayName": "Craie douce", "canonical": "#f0f1ec", "tonalRamp": ["#242522", "#454641", "#686963", "#8c8d86", "#b0b1aa", "#d0d1cb", "#e5e6e0", "#f0f1ec"] },
+      "dark-accent": { "role": "primary", "displayName": "Bleu ardoise lumineux", "canonical": "#89a9be", "tonalRamp": ["#172b38", "#294455", "#3e5e72", "#577a90", "#7296ac", "#89a9be", "#b8cedb", "#e5eff4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Proposition principale et phrases de forte hiérarchie." },
+      "headline": { "displayName": "Headline", "purpose": "Titres de sections." },
+      "body": { "displayName": "Body", "purpose": "Descriptions lisibles et calmes." },
+      "metadata": { "displayName": "Metadata", "purpose": "Dates, catégories et informations techniques." },
+      "signature": { "displayName": "Signature", "purpose": "Identité Anjary uniquement." }
+    },
+    "shadows": [
+      { "name": "navigation-light", "value": "inset 0 1px 0 rgb(255 255 255 / 0.05), 0 16px 40px -20px rgb(0 0 0 / 0.22)", "purpose": "Détacher le header flottant dans le thème clair." },
+      { "name": "navigation-dark", "value": "inset 0 1px 0 rgb(255 255 255 / 0.05), 0 16px 40px -20px rgb(0 0 0 / 0.6)", "purpose": "Détacher le header flottant dans le thème sombre." }
+    ],
+    "motion": [
+      { "name": "state-fast", "value": "200ms ease", "purpose": "Couleurs, opacité et micro-translations des contrôles." },
+      { "name": "floating-header", "value": "500ms cubic-bezier(.2,.8,.2,1)", "purpose": "Transformation du header en navigation flottante." },
+      { "name": "entry", "value": "700ms ease-out", "purpose": "Entrée discrète du hero au chargement." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action principale compacte, contrastée et entièrement arrondie.",
+      "html": "<button class=\"ds-btn-primary\">Me contacter <span aria-hidden=\"true\">↗</span></button>",
+      "css": ".ds-btn-primary{display:inline-flex;height:2.5rem;align-items:center;gap:.375rem;border:0;border-radius:9999px;background:var(--foreground,#171816);color:var(--background,#f7f7f4);padding:0 1.25rem;font:500 .875rem/1.25 'Onest Variable',sans-serif;transition:opacity .2s ease,transform .2s ease}.ds-btn-primary:hover{opacity:.85}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid var(--ring,#6f899a);outline-offset:3px}"
+    },
+    {
+      "name": "Outline CTA",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Action secondaire transparente et de même gabarit que l’action principale.",
+      "html": "<button class=\"ds-btn-outline\">Voir les projets <span aria-hidden=\"true\">↓</span></button>",
+      "css": ".ds-btn-outline{display:inline-flex;height:2.5rem;align-items:center;gap:.375rem;border:1px solid var(--border,#dadcd5);border-radius:9999px;background:transparent;color:var(--foreground,#171816);padding:0 1.25rem;font:500 .875rem/1.25 'Onest Variable',sans-serif;transition:border-color .2s ease,transform .2s ease}.ds-btn-outline:hover{border-color:color-mix(in srgb,var(--foreground,#171816) 40%,transparent)}.ds-btn-outline:active{transform:translateY(1px)}.ds-btn-outline:focus-visible{outline:2px solid var(--ring,#6f899a);outline-offset:3px}"
+    },
+    {
+      "name": "Technology Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Étiquette technique informative, discrète et non interactive.",
+      "html": "<span class=\"ds-chip\">TypeScript</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;border:1px solid var(--border,#dadcd5);border-radius:9999px;background:transparent;color:color-mix(in srgb,var(--foreground,#171816) 75%,transparent);padding:.125rem .625rem;font:400 .75rem/1.25rem 'Onest Variable',sans-serif}"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "description": "En-tête éditorial associant index, titre et introduction.",
+      "html": "<div class=\"ds-section-head\"><h2>Projets</h2><p>Une sélection de produits web, du concept à la mise en ligne.</p></div>",
+      "css": ".ds-section-head{display:grid;gap:.75rem;color:var(--foreground,#171816)}.ds-section-head h2{margin:0;font:600 1.5rem/1.15 'Bricolage Grotesque Variable',sans-serif;letter-spacing:-.035em}.ds-section-head p{max-width:32rem;margin:0;color:var(--muted-foreground,#686b64);font:400 .9375rem/1.75 'Onest Variable',sans-serif}@media(min-width:640px){.ds-section-head{grid-template-columns:8rem minmax(0,1fr);gap:1.5rem}.ds-section-head p{padding-top:.25rem}}"
+    },
+    {
+      "name": "Floating Navigation",
+      "kind": "nav",
+      "description": "Navigation translucide et légèrement élevée après défilement.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-signature\">Anjary</span><div><a href=\"#projects\">Projets</a><a href=\"#stack\">Stack</a><button type=\"button\">FR/EN</button></div></nav>",
+      "css": ".ds-nav{display:flex;height:3.5rem;align-items:center;justify-content:space-between;border:1px solid color-mix(in srgb,var(--border,#dadcd5) 80%,transparent);border-radius:1.75rem;background:color-mix(in srgb,var(--background,#f7f7f4) 80%,transparent);padding:0 .375rem 0 1.25rem;box-shadow:inset 0 1px 0 rgb(255 255 255/.05),0 16px 40px -20px rgb(0 0 0/.22);backdrop-filter:blur(16px) saturate(1.5)}.ds-signature{font:400 1.6rem/1 'Nothing You Could Do',cursive;letter-spacing:-.06em}.ds-nav div{display:flex;align-items:center;gap:.25rem}.ds-nav a,.ds-nav button{border:0;background:transparent;color:var(--muted-foreground,#686b64);padding:.5rem .75rem;font:400 .8125rem/1.25 'Onest Variable',sans-serif;text-decoration:none;transition:color .2s ease}.ds-nav a:hover,.ds-nav button:hover{color:var(--foreground,#171816)}.ds-nav a:focus-visible,.ds-nav button:focus-visible{outline:2px solid var(--ring,#6f899a);outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La vitrine technique raffinée",
+    "overview": "Une vitrine calme, nette et professionnelle où la crédibilité vient des proportions, de la typographie et des détails d’interaction. La structure éditoriale met le travail au premier plan, tandis que la signature, le portrait et le bleu ardoise apportent une présence humaine mesurée.",
+    "keyCharacteristics": ["Palette minérale avec accent bleu ardoise rare", "Grille éditoriale étroite avec rail de métadonnées", "Typographie technique mais accueillante", "Profondeur légère et fonctionnelle", "Composants raffinés et retenus"],
+    "rules": [
+      { "name": "The Rare Accent Rule", "body": "Le bleu ardoise indique une priorité ou une interaction ; sa rareté préserve son autorité.", "section": "colors" },
+      { "name": "The Three Voices Rule", "body": "Bricolage Grotesque structure, Onest explique, le monospace annote.", "section": "typography" },
+      { "name": "The Earned Elevation Rule", "body": "Une surface ne gagne de profondeur que lorsqu’elle flotte réellement ou répond à une interaction.", "section": "elevation" }
+    ],
+    "dos": ["Préserver la colonne étroite et le rail éditorial de 8rem.", "Utiliser l’accent bleu ardoise avec parcimonie.", "Maintenir des états de focus visibles et une option de réduction du mouvement.", "Conserver la parité entre les expériences française et anglaise."],
+    "donts": ["Ne pas transformer les listes en grille générique de cartes SaaS.", "Ne pas multiplier les dégradés, halos, effets de verre ou animations lourdes.", "Ne pas ajouter une nouvelle police sans remplacer un rôle existant.", "Ne pas présenter les projets conceptuels comme des réalisations livrées."]
+  }
+}

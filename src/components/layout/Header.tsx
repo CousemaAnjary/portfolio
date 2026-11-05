@@ -95,7 +95,7 @@ export function Header({
       {/* En haut de page : aucun effet. Au scroll : la barre se resserre en pilule flottante. */}
       <div
         className={cn(
-          "mx-auto flex items-center justify-between border transition-[max-width,height,translate,padding,border-radius,background-color,border-color,box-shadow] duration-500 ease-[cubic-bezier(.2,.8,.2,1)]",
+          "mx-auto flex items-center justify-between border transition-[translate,background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-[cubic-bezier(.2,.8,.2,1)]",
           isScrolled
             ? "translate-y-4 h-14 max-w-[min(40rem,calc(100%_-_2rem))] rounded-[28px] border-border/80 bg-background/80 pr-1.5 pl-5 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05),0_16px_40px_-20px_rgb(0_0_0/0.22)] backdrop-blur-xl dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05),0_16px_40px_-20px_rgb(0_0_0/0.6)] backdrop-saturate-150"
             : "translate-y-0 h-16 max-w-190 rounded-none border-transparent bg-transparent px-4 shadow-none sm:px-6",
@@ -109,7 +109,7 @@ export function Header({
           <span className="font-signature text-[1.6rem] leading-none tracking-[-0.06em] transition-colors duration-200 group-hover:text-accent-strong">
             Anjary
           </span>
-          <span className="ml-1 font-mono text-[9px] tracking-tight text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
+          <span className="ml-1 font-mono text-xs tracking-tight text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
             .dev
           </span>
         </a>
@@ -128,7 +128,7 @@ export function Header({
                   href={href}
                   aria-current={isActive ? "location" : undefined}
                   className={cn(
-                    "px-3 py-1.5 text-[13px] transition-colors duration-300",
+                    "px-3 py-1.5 text-sm transition-colors duration-300",
                     isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                     focusRing,
                   )}
@@ -142,7 +142,7 @@ export function Header({
           <span className="mx-1 hidden h-4 w-px bg-border sm:block" aria-hidden="true" />
 
           <div
-            className="flex items-center font-mono text-[11px] tracking-tight"
+            className="flex items-center font-mono text-xs tracking-tight"
             role="group"
             aria-label={language === "fr" ? "Langue" : "Language"}
           >
